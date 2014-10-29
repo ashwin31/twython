@@ -3,10 +3,13 @@
 import os
 import sys
 
-from setuptools import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 __author__ = 'Ryan McGrath <ryan@venodesigns.net>'
-__version__ = '3.1.0'
+__version__ = '3.1.2'
 
 packages = [
     'twython',
@@ -20,15 +23,16 @@ if sys.argv[-1] == 'publish':
 setup(
     name='twython',
     version=__version__,
-    install_requires=['requests==2.0.0', 'requests_oauthlib==0.3.2'],
+    install_requires=['requests==2.1.0', 'requests_oauthlib==0.4.0'],
     author='Ryan McGrath',
     author_email='ryan@venodesigns.net',
     license=open('LICENSE').read(),
     url='https://github.com/ryanmcgrath/twython/tree/master',
     keywords='twitter search api tweet twython stream',
-    description='Actively maintained, pure Python wrapper for the Twitter API. Supports both normal and streaming Twitter APIs',
+    description='Actively maintained, pure Python wrapper for the \
+    Twitter API. Supports both normal and streaming Twitter APIs',
     long_description=open('README.rst').read() + '\n\n' +
-                     open('HISTORY.rst').read(),
+        open('HISTORY.rst').read(),
     include_package_data=True,
     packages=packages,
     classifiers=[
